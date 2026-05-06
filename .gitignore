@@ -1,1 +1,21 @@
 desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.virtual/
+
+# Project working files
+ai-comic-studio/logs/
+ai-comic-studio/projects/*/working/
+ai-comic-studio/projects/*/output/
+ai-comic-studio/**/__pycache__/
+
+# User input assets (not committed)
+ai-comic-studio/projects/*/input/images/
+ai-comic-studio/projects/*/input/bgm/
+
+# IDE
+.vscode/
+.idea/

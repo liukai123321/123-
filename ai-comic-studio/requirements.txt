@@ -1,0 +1,27 @@
+# AI Comic Studio Pipeline - Python Dependencies
+# Usage: pip install -r requirements.txt
+
+# Video editing (Python wrapper, backend uses ffmpeg)
+moviepy>=1.0.3
+
+# Audio processing
+pydub>=0.25.1
+edge-tts>=6.1.0
+
+# Speech recognition (local, free)
+faster-whisper>=1.0.0
+
+# Subtitle processing (ASS format)
+pysubs2>=1.7.0
+
+# Image processing
+Pillow>=10.0.0
+
+# Configuration parsing
+PyYAML>=6.0
+
+# Progress display
+tqdm>=4.66.0
+
+# Audio/Video analysis
+numpy>=1.24.0

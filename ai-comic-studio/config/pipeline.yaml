@@ -1,0 +1,67 @@
+# ============================================
+# AI漫剧音乐剪辑流水线 - 全局配置
+# ============================================
+# 所有可调参数集中在此文件，无需修改代码
+# 支持项目级覆盖：projects/<name>/pipeline.yaml
+
+project:
+  name: "demo"                    # 当前项目名
+  fps: 24                         # 帧率
+
+output:
+  resolution: [1080, 1920]        # 抖音竖屏 9:16 (宽x高)
+  bitrate: "8M"                   # 视频码率
+  audio_bitrate: "192k"           # 音频码率
+  format: "mp4"                   # 输出格式
+  codec: "h264"                   # 视频编码器
+
+audio:
+  tts:
+    engine: "edge-tts"            # TTS引擎
+    voice: "zh-CN-XiaoxiaoNeural" # 配音音色
+    rate: "+0%"                   # 语速调整
+    volume: "+0%"                 # 音量调整
+  bgm:
+    volume: 0.3                   # BGM音量（相对于配音，0.0~1.0）
+    fade_in: 2.0                  # BGM淡入秒数
+    fade_out: 3.0                 # BGM淡出秒数
+    loop: true                    # BGM是否循环
+  mix:
+    sample_rate: 44100            # 混音采样率
+    channels: 2                   # 声道数
+
+subtitle:
+  engine: "faster-whisper"        # 语音识别引擎
+  model: "medium"                 # 模型大小 (tiny/base/small/medium/large-v3)
+  device: "auto"                  # 运行设备 (cpu/cuda/auto)
+  compute_type: "int8"            # 计算精度
+  language: "zh"                  # 识别语言
+  max_line_width: 18              # 单行最大字数
+  max_lines: 2                    # 屏幕最大行数
+  # 若已有 edge-tts 时间戳，直接使用（跳过 whisper）
+  use_tts_timestamps: true
+
+  style:
+    font: "C:/Windows/Fonts/msyh.ttc"       # 字体（微软雅黑）
+    font_size: 30                            # 字体大小
+    primary_color: "&H00FFFFFF"              # 主色（白色）
+    secondary_color: "&H000000FF"            # 次色（蓝色）
+    outline_color: "&H00000000"              # 描边色（黑色）
+    outline_width: 3                         # 描边宽度
+    shadow_width: 1                          # 阴影宽度
+    margin_v: 70                             # 垂直边距（距底部）
+    alignment: 2                             # 2=底部居中, 8=顶部居中
+
+video:
+  transition:
+    default: "fade"               # 默认转场类型
+    duration: 0.5                 # 转场时长（秒）
+  image_duration: 4.0             # 单张图片默认停留时长（秒）
+  min_clip_duration: 1.5          # 最小片段时长
+  ken_burns:
+    zoom_max: 1.15                # Ken Burns 最大缩放
+    pan: true                     # 是否启用平移
+
+logging:
+  level: "INFO"                   # 日志级别
+  file: "logs/pipeline.log"       # 日志文件
